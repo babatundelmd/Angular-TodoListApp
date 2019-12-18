@@ -1,0 +1,12 @@
+<div class="jumbotron" style="padding: 45px 0px">
+  <h4 class="text-center">
+    Todo List App
+  </h4>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" #itemTitle style="height: auto" aria-label="Text input with icon">
+  <div class="input-group-text" (click)="onAdd(itemTitle)">
+    <i class="fa fa-plus-circle fa-2x"></i>
+  </div>
+</div>
