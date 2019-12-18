@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 
-@Injectable( {
+@Injectable({
   providedIn: 'root'
-} )
+})
 export class TodoService {
   todoList: AngularFireList<any>;
 
-  constructor ( private firebasedb: AngularFireDatabase ) { }
+  constructor (private firebasedb: AngularFireDatabase) { }
 
   getTodoList () {
-    return this.todoList = this.firebasedb.list( 'titles' )
+    return this.todoList = this.firebasedb.list('titles')
   }
 
-  addTitle ( title: string ) {
-    this.todoList.push( {
+  addTitle (title: string) {
+    this.todoList.push({
       title: title,
       isChecked: false
-    } )
+    })
   }
 
-  checkOrUncheckTitle ( $key: string, flag: boolean ) {
-    return this.todoList.update( $key, { isChecked: flag } );
+  checkOrUncheckTitle ($key: string, flag: boolean) {
+    return this.todoList.update($key, { isChecked: flag });
   }
 
-  removeTitle ( $key: string ) {
-    return this.todoList.remove( $key );
+  removeTitle ($key: string) {
+    return this.todoList.remove($key);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../services/todo.service';
-import { element } from '@angular/core/src/render3';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-todo',
@@ -10,7 +10,7 @@ import { element } from '@angular/core/src/render3';
 export class TodoComponent implements OnInit {
   todoListArray: any[];
 
-  constructor (private todoService: TodoService) { }
+  constructor (private todoService: TodoService, private toastr: ToastrService) { }
 
   ngOnInit () {
     this.todoService.getTodoList().snapshotChanges()
@@ -25,18 +25,22 @@ export class TodoComponent implements OnInit {
         this.todoListArray.sort((a, b) => a.isChecked - b.isChecked);
       });
   }
-
+  // Add Todo Item
   onAdd (itemTitle) {
     this.todoService.addTitle(itemTitle.value);
+    this.toastr.success('Task Successfully Added!', 'Add Task');
     itemTitle.value = null;
   }
-
+  // Check Item
   alterCheck ($key: string, isChecked) {
     this.todoService.checkOrUncheckTitle($key, !isChecked);
+    this.toastr.info('You have completed a task', 'Task Completed');
   }
-
+  // Delete a Todo Item
   onDelete ($key: string) {
-    this.todoService.removeTitle($key)
+    this.todoService.removeTitle($key);
+    this.toastr.error('Task Removed Successfully!', 'Remove Todo Task');
+
   }
 
 }
