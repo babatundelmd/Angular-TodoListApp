@@ -1,3 +1,12 @@
 input{
     height: auto;
 }
+
+.hover-cursor{
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: aliceblue;
+    transition: .2s all ease-in-out;
+}
