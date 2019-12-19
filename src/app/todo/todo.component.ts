@@ -35,6 +35,8 @@ export class TodoComponent implements OnInit {
       this.todoService.addTitle(itemTitle.value);
       this.toastr.success('Task Successfully Added!', 'Add Task');
     }
+    itemTitle.value = null;
+
   }
   // Check Item
   alterCheck ($key: string, isChecked) {
