@@ -27,9 +27,14 @@ export class TodoComponent implements OnInit {
   }
   // Add Todo Item
   onAdd (itemTitle) {
-    this.todoService.addTitle(itemTitle.value);
-    this.toastr.success('Task Successfully Added!', 'Add Task');
-    itemTitle.value = null;
+    if (!itemTitle.value) {
+      console.log(itemTitle.value)
+      this.toastr.warning('Enter a task, input field can\'t be empty', 'Add Task');
+    }
+    else {
+      this.todoService.addTitle(itemTitle.value);
+      this.toastr.success('Task Successfully Added!', 'Add Task');
+    }
   }
   // Check Item
   alterCheck ($key: string, isChecked) {
