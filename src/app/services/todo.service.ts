@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
+import { Todo } from '../models/todo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  todoList: AngularFireList<any>;
+  todoList: AngularFireList<Todo>;
 
   constructor (private firebasedb: AngularFireDatabase) { }
 
